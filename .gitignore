@@ -1,6 +1,7 @@
 ibraheem
 shopee/db.sqlite3
-# shopee/cartee
+shopee/cartee/__pycache__
+shopee/shopee/__pycache__
 shopee/cartee/migrations
 # shopee/shopee
 shopee/shopee/__pycache__
