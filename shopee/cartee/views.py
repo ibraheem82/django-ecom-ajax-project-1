@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, Cart
+from .models import Product, Cart, CartItems
 from django.http import JsonResponse
 import json
 # Create your views here.
@@ -32,4 +32,16 @@ def cart(request):
     return render(request, 'cartee/cart.html', context)
 
 def updateCart(request):
-    return JsonResponse('')
+    data = json.loads(request.body)
+    product_id = data['product_id']
+    action = data['action']
+    product = Product.objects.get(product_id = product_id)
+    if request.user.is_authenticated:
+        customer = request.user
+        cart, created = Cart.objects.get_or_create(owner = customer, completed = False)
+        cartitems, created = CartItems.objects.get_or_create(product = product, cart = cart)
+
+        if action == 'add':
+            cartitems.quantity += 1
+        cartitems.save()
+    return JsonResponse('It is working', safe=False)
