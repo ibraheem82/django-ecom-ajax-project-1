@@ -1,5 +1,6 @@
 ibraheem
 shopee/db.sqlite3
+shopee/media
 shopee/cartee/__pycache__
 shopee/shopee/__pycache__
 shopee/cartee/migrations
