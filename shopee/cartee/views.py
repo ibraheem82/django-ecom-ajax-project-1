@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Cart
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -28,3 +29,6 @@ def cart(request):
         cart = {'cartquantity' : 0}
     context = {'cart':cart, 'cartitems': cartitems}
     return render(request, 'cartee/cart.html', context)
+
+def updateCart(request):
+    return JsonResponse('')
