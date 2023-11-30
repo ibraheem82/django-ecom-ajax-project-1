@@ -47,11 +47,22 @@
 
       {% for item in cartitems %}
       <tr>
-        <th scope="row"><div id = "cart_image"><img src ='{{item.product.image.url}}'></div></th>
-        <td><h3>{{item.product.name}}</h3></td>
-        <td><h3>${{item.product.price}}</h3></td>
-        <td><input type = 'number'data-product="{{item.product.product_id}}" class = 'quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px'></td>
-        <td><h3>${{item.subtotal | floatformat:2}}</h3></td>
+        <th scope="row"><div id = "cart_image">
+          <img src ='{{item.product.image.url}}'>
+        </div>
+        </th>
+        <td>
+          <h3>{{item.product.name}}</h3>
+        </td>
+        <td>
+          <h3>${{item.product.price}}</h3>
+        </td>
+        <td>
+          <input type = 'number'data-product="{{item.product.product_id}}" class = 'quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px'>
+        </td>
+        <td>
+          <h3>${{item.subtotal | floatformat:2}}</h3>
+        </td>
       </tr>
       {% endfor %}
       <tr>
