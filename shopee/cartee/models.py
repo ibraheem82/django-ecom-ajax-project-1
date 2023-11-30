@@ -20,6 +20,15 @@ class Cart(models.Model):
     
     def __str__(self):
         return self.owner.username
+    
+    #  Calculating the total by summing up the subtotal attribute of each CartItem in the cartitems list. It uses a list comprehension to create a list of subtotals.
+    @property
+    def grandtotal(self):
+        cartitems = self.cartitems_set.all()
+        print(cartitems)
+        total = sum([item.subtotal for item in cartitems])
+        print(total)
+        return total
 
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
