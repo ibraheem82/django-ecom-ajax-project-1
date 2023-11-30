@@ -21,12 +21,12 @@ class Cart(models.Model):
     def __str__(self):
         return self.owner.username
 
-class CartItem(models.Model):
+class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.product
+        return self.product.name
     
     
