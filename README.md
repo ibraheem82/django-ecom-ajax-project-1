@@ -23,7 +23,7 @@
 Ensure you have the following installed:
 
 - Python (version x.x)
-- Django (version x.x)
+- Django (version 4.2.6)
 - Virtualenv
 
 ## Installation
