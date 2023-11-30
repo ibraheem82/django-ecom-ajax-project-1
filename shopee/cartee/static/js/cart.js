@@ -32,8 +32,6 @@ fetch(url, {
 
 .then(data => {
   console.log('Success:', data);
-  // Display an alert when item is added
-  alert('Item added to the cart');
 
 
   
@@ -49,7 +47,7 @@ fetch(url, {
           <use xlink:href="#check-circle-fill"/>
         </svg>
         <div>
-          Cart updated successfully
+        <h3>${data.product_name} was added to cart...</h3>
         </div>
       `;
 
@@ -57,6 +55,12 @@ fetch(url, {
       alertContainer.innerHTML = '';
       alertContainer.appendChild(successAlert);
   document.getElementById('cart').innerHTML = `<h4>${data.quantity}</h4>`
+
+  // Remove the alert after 3 seconds
+  setTimeout(() => {
+    alertContainer.innerHTML = '';
+  }, 3000); // 3000 milliseconds (3 seconds)
+
 })
 .catch((error) => {
   console.error('Error:', error);
