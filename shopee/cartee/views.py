@@ -44,9 +44,12 @@ def updateCart(request):
 
         if action == 'add':
             cartitems.quantity += 1
-        cartitems.save()
-    # Get the name of the product
+            cartitems.save()
+            msg = {
+                'quantity': cart.cartquantity
+            }
+            print(msg)
         product_name = product.name
-        return JsonResponse({'message': 'It is working', 'product_name': product_name}, safe=False)
+        return JsonResponse({'msg': msg, 'product_name': product_name}, safe=False)
     else:
         return JsonResponse({'message': 'User is not authenticated'}, safe=False)

@@ -32,6 +32,14 @@ fetch(url, {
 
 .then(data => {
   console.log('Success:', data);
+  const cartElement = document.querySelector('#cart');
+  console.log(cartElement);
+
+  if (cartElement && data.msg && data.msg.quantity !== undefined) {
+    cartElement.textContent = data.msg.quantity;
+  } else {
+    console.error('Error: Unable to update cart element');
+  }
 
 
   
