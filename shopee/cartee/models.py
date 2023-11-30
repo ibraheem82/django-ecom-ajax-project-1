@@ -25,10 +25,15 @@ class Cart(models.Model):
     @property
     def grandtotal(self):
         cartitems = self.cartitems_set.all()
-        print(cartitems)
         total = sum([item.subtotal for item in cartitems])
-        print(total)
         return total
+    
+    @property
+    def cartquantity(self):
+        cartitems = self.cartitems_set.all()
+        total = sum([item.quantity for item in cartitems])
+        return total
+        
 
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
@@ -42,4 +47,3 @@ class CartItems(models.Model):
     def subtotal(self):
         total = self.quantity * self.product.price    
         return total
-    
